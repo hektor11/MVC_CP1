@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Checkpoint1.Models.Data.Question>
+@{
+    ViewBag.Title = "ViewQuestions";
+}
+
+<h2>View Questions</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Required)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionText)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Required)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionText)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                <a href="@Url.Action("AddResponse", "Survey", new { id = item.ID })">Add Response</a> |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
